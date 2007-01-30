@@ -121,7 +121,19 @@
 				RelativePath="MainFrm.cpp">
 			</File>
 			<File
+				RelativePath="SigPrmsDlg.cpp">
+			</File>
+			<File
+				RelativePath="Signal.cpp">
+			</File>
+			<File
 				RelativePath="SignalDoc.cpp">
+			</File>
+			<File
+				RelativePath="SignalSin.cpp">
+			</File>
+			<File
+				RelativePath="SignalTri.cpp">
 			</File>
 			<File
 				RelativePath="SignalView.cpp">
@@ -158,7 +170,19 @@
 				RelativePath="Resource.h">
 			</File>
 			<File
+				RelativePath="SigPrmsDlg.h">
+			</File>
+			<File
+				RelativePath="Signal.h">
+			</File>
+			<File
 				RelativePath="SignalDoc.h">
+			</File>
+			<File
+				RelativePath="SignalSin.h">
+			</File>
+			<File
+				RelativePath="SignalTri.h">
 			</File>
 			<File
 				RelativePath="SignalView.h">
