@@ -65,13 +65,14 @@ LINK32=link.exe
 # PROP Use_Debug_Libraries 1
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Yu"stdafx.h" /FD /GZ  /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Yu"stdafx.h" /FD /GZ   /c
+# ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W4 /Gm /GR- /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x402 /d "_DEBUG" /d "_AFXDLL"
-# ADD RSC /l 0x402 /d "_DEBUG" /d "_AFXDLL"
+# ADD RSC /l 0x409 /d "_DEBUG" /d "_AFXDLL"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
@@ -98,11 +99,57 @@ SOURCE=.\MainFrm.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\Signal.cpp
+
+!IF  "$(CFG)" == "sivi - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "sivi - Win32 Debug"
+
+# ADD CPP /GR
+# SUBTRACT CPP /YX /Yc /Yu
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\SignalDoc.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\SignalSin.cpp
+
+!IF  "$(CFG)" == "sivi - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "sivi - Win32 Debug"
+
+# ADD CPP /GR
+# SUBTRACT CPP /YX /Yc /Yu
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\SignalTri.cpp
+
+!IF  "$(CFG)" == "sivi - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "sivi - Win32 Debug"
+
+# ADD CPP /GR
+# SUBTRACT CPP /YX /Yc /Yu
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\SignalView.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\SigPrmsDlg.cpp
 # End Source File
 # Begin Source File
 
@@ -135,11 +182,27 @@ SOURCE=.\Resource.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\Signal.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\SignalDoc.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\SignalSin.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\SignalTri.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\SignalView.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\SigPrmsDlg.h
 # End Source File
 # Begin Source File
 
