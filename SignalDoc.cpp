@@ -30,6 +30,10 @@ CSignalDoc::CSignalDoc() {
 }
 
 CSignalDoc::~CSignalDoc() {
+	for ( int i = 0; i < m_aSignals.GetCount(); ++i )
+		delete m_aSignals.GetAt(i);
+
+	m_aSignals.RemoveAll();
 }
 
 BOOL CSignalDoc::OnNewDocument() {
