@@ -5,6 +5,7 @@
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
 #define IDR_SIVITYPE                    129
+#define IDR_SIGNALMENU                  129
 #define IDD_SIGPARAMS                   131
 #define IDC_SIGTYPE                     1000
 #define IDC_STSIGTYPE                   1001
@@ -13,6 +14,9 @@
 #define IDC_STSIGAMP                    1004
 #define IDC_STSIGFREQ                   1005
 #define ID_FILE_ADDSIGNAL               32771
+#define IDS_VIEW_INFO                   61446
+#define IDS_VIEW_INFO_CMB               61447
+#define IDS_SIGNAL_ADDERR               61448
 
 // Next default values for new objects
 // 
