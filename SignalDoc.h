@@ -10,17 +10,35 @@
 #endif // _MSC_VER > 1000
 
 
-class CSignalDoc : public CDocument
-{
+#include "signal.h"
+#include "signalsin.h"
+#include "signaltri.h"
+
+using sivi::CSignal;
+using sivi::CSignalSin;
+using sivi::CSignalTri;
+
+class CSignalDoc : public CDocument {
 protected: // create from serialization only
 	CSignalDoc();
 	DECLARE_DYNCREATE(CSignalDoc)
 
 // Attributes
+private:
+	CObArray m_aSignals;
+
+// Attributes
 public:
+	CSignal * GetSignal(int number) const;
+	int SignalsCount(void) const;
+	CString GetType(int number) const;
 
 // Operations
 public:
+	int ChangeType(int number, CString type);
+	int AddSignal(CString type, double amp, double freq);
+	double CalcAmplitude(void);
+	double Calc(double x);
 
 // Overrides
 	// ClassWizard generated virtual function overrides
@@ -43,8 +61,7 @@ protected:
 // Generated message map functions
 protected:
 	//{{AFX_MSG(CSignalDoc)
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
+	afx_msg void OnUpdateFileSave(CCmdUI* pCmdUI);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

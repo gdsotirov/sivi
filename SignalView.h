@@ -10,15 +10,14 @@
 #endif // _MSC_VER > 1000
 
 
-class CSignalView : public CView
-{
+class CSignalView : public CView {
 protected: // create from serialization only
 	CSignalView();
 	DECLARE_DYNCREATE(CSignalView)
 
 // Attributes
 public:
-	CSignalDoc* GetDocument();
+	CSignalDoc* GetDocument() const;
 
 // Operations
 public:
@@ -48,15 +47,17 @@ protected:
 // Generated message map functions
 protected:
 	//{{AFX_MSG(CSignalView)
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
+	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+	afx_msg void OnFileAddsignal();
+	afx_msg void OnUpdateFileAddsignal(CCmdUI* pCmdUI);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
 
 #ifndef _DEBUG  // debug version in SignalView.cpp
-inline CSignalDoc* CSignalView::GetDocument()
-   { return (CSignalDoc*)m_pDocument; }
+inline CSignalDoc* CSignalView::GetDocument() const {
+	return (CSignalDoc*)m_pDocument;
+}
 #endif
 
 /////////////////////////////////////////////////////////////////////////////

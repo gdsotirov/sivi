@@ -10,8 +10,7 @@
 /////////////////////////////////////////////////////////////////////////////
 // CSigPrmsDlg dialog
 
-class CSigPrmsDlg : public CDialog
-{
+class CSigPrmsDlg : public CDialog {
 // Construction
 public:
 	CSigPrmsDlg(CWnd* pParent = NULL);   // standard constructor
@@ -19,7 +18,9 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CSigPrmsDlg)
 	enum { IDD = IDD_SIGPARAMS };
-		// NOTE: the ClassWizard will add data members here
+	CString m_stype;
+	double  m_samp;
+	double  m_sfreq;
 	//}}AFX_DATA
 
 

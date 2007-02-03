@@ -15,20 +15,21 @@ static char THIS_FILE[] = __FILE__;
 // CSigPrmsDlg dialog
 
 
-CSigPrmsDlg::CSigPrmsDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(CSigPrmsDlg::IDD, pParent)
-{
+CSigPrmsDlg::CSigPrmsDlg(CWnd* pParent /*=NULL*/) : CDialog(CSigPrmsDlg::IDD, pParent) {
 	//{{AFX_DATA_INIT(CSigPrmsDlg)
-		// NOTE: the ClassWizard will add member initialization here
+	m_stype = _T("sin");
+	m_samp = 0.0;
+	m_sfreq = 0.0;
 	//}}AFX_DATA_INIT
 }
 
 
-void CSigPrmsDlg::DoDataExchange(CDataExchange* pDX)
-{
+void CSigPrmsDlg::DoDataExchange(CDataExchange* pDX) {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CSigPrmsDlg)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
+	DDX_CBString(pDX, IDC_SIGTYPE, m_stype);
+	DDX_Text(pDX, IDC_SIGAMP,  m_samp);
+	DDX_Text(pDX, IDC_SIGFREQ, m_sfreq);
 	//}}AFX_DATA_MAP
 }
 
