@@ -14,17 +14,21 @@
 #define IDC_STSIGAMP                    1004
 #define IDC_STSIGFREQ                   1005
 #define ID_FILE_ADDSIGNAL               32771
+#define ID_VIEW_ZOM_ZOOMIN              32780
+#define ID_VIEW_ZOM_ZOOMOUT             32781
+#define ID_VIEW_ZOM_ORIGINALSIZE        32782
 #define IDS_VIEW_INFO                   61446
 #define IDS_VIEW_INFO_CMB               61447
 #define IDS_SIGNAL_ADDERR               61448
+#define IDS_COORDINATES                 61449
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        133
-#define _APS_NEXT_COMMAND_VALUE         32773
+#define _APS_NEXT_RESOURCE_VALUE        134
+#define _APS_NEXT_COMMAND_VALUE         32783
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

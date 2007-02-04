@@ -156,9 +156,9 @@ BEGIN
     BUTTON      ID_FILE_OPEN
     BUTTON      ID_FILE_SAVE
     SEPARATOR
-    BUTTON      ID_EDIT_CUT
-    BUTTON      ID_EDIT_COPY
-    BUTTON      ID_EDIT_PASTE
+    BUTTON      ID_FILE_ADDSIGNAL
+    BUTTON      ID_VIEW_ZOM_ZOOMIN
+    BUTTON      ID_VIEW_ZOM_ZOOMOUT
     SEPARATOR
     BUTTON      ID_FILE_PRINT
     SEPARATOR
@@ -225,6 +225,13 @@ BEGIN
     END
     POPUP "&View"
     BEGIN
+        POPUP "Zom"
+        BEGIN
+            MENUITEM "Zoom In\tAlt++",              ID_VIEW_ZOM_ZOOMIN
+            MENUITEM "Zoom Out\tAlt+-",             ID_VIEW_ZOM_ZOOMOUT
+            MENUITEM "Original size\tAlt+0",        ID_VIEW_ZOM_ORIGINALSIZE
+        END
+        MENUITEM SEPARATOR
         MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
         MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
     END
@@ -249,20 +256,24 @@ END
 
 IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
 BEGIN
-    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
-    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
-    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
-    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
-    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
-    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
-    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
-    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
-    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
-    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
-    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
-    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
-    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
-    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+    "+",            ID_VIEW_ZOM_ZOOMIN,     ASCII,  ALT, NOINVERT
+    "-",            ID_VIEW_ZOM_ZOOMOUT,    ASCII,  ALT, NOINVERT
+    "0",            ID_VIEW_ZOM_ORIGINALSIZE, VIRTKEY, ALT, NOINVERT
+    "A",            ID_FILE_ADDSIGNAL,      VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
 END
 
 
@@ -477,6 +488,14 @@ BEGIN
     IDS_VIEW_INFO           "Type: %s, Amp: %.2f, Freq: %.2f"
     IDS_VIEW_INFO_CMB       "Type: %s"
     IDS_SIGNAL_ADDERR       "Error creating signal! Signal not added."
+    IDS_COORDINATES         "X: %.2f, Y: %.2f"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_ADDSIGNAL       "Add another signal"
+    ID_VIEW_ZOM_ZOOMIN      "Zoom In"
+    ID_VIEW_ZOM_ZOOMOUT     "Zoom Out"
 END
 
 #endif    // English (U.S.) resources
