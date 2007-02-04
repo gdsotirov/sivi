@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "sivi.h"
 
+#include "MainFrm.h"
 #include "SignalDoc.h"
 #include "SignalView.h"
 #include "SigPrmsDlg.h"
@@ -26,6 +27,7 @@ BEGIN_MESSAGE_MAP(CSignalView, CView)
 	ON_WM_LBUTTONDBLCLK()
 	ON_COMMAND(ID_FILE_ADDSIGNAL, OnFileAddsignal)
 	ON_UPDATE_COMMAND_UI(ID_FILE_ADDSIGNAL, OnUpdateFileAddsignal)
+	ON_WM_MOUSEMOVE()
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -36,7 +38,7 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // CSignalView construction/destruction
 
-CSignalView::CSignalView() {
+CSignalView::CSignalView() : m_lFontHeight(0) {
 }
 
 CSignalView::~CSignalView() {
@@ -57,7 +59,6 @@ void CSignalView::OnDraw(CDC* pDC) {
 	ASSERT_VALID(pDoc);
 
 	CString buf;
-	RECT cl_rect;
 	CString type;
 	TEXTMETRIC tm;
 
@@ -83,28 +84,45 @@ void CSignalView::OnDraw(CDC* pDC) {
 
 	pDC->TextOut(TEXT_OFFSET, TEXT_OFFSET, buf);
 	pDC->GetTextMetrics(&tm);
+	m_lFontHeight = tm.tmHeight;
 
 	// Draw coordinate system
-	GetClientRect(&cl_rect);
+	GetClientRect(&m_ClRect);
 
-	int center_x = cl_rect.right / 2;
-	int center_y = cl_rect.bottom / 2;
+	int center_x = m_ClRect.right / 2;
+	int center_y = m_ClRect.bottom / 2;
 
-	pDC->MoveTo(cl_rect.left, center_y);
-	pDC->LineTo(cl_rect.right, center_y);
-	pDC->MoveTo(center_x, cl_rect.top);
-	pDC->LineTo(center_x, cl_rect.bottom);
+	pDC->MoveTo(m_ClRect.left, center_y);
+	pDC->LineTo(m_ClRect.right, center_y);
+	pDC->MoveTo(center_x, m_ClRect.top);
+	pDC->LineTo(center_x, m_ClRect.bottom);
 
 	double amp_sum = pDoc->CalcAmplitude();
 	if ( amp_sum != 0 ) {
-		double unit_in_pixels = (center_y - tm.tmHeight - TEXT_OFFSET * 2) / amp_sum;
-		double start_x_units = - (center_x - 5) / unit_in_pixels;
+		double unit_in_pixels = (center_y - m_lFontHeight - TEXT_OFFSET * 2) / amp_sum;
+		double start_x_units = - center_x / unit_in_pixels;
+
+		// Draw numbers on the y axis
+		int y = -(int)amp_sum;
+		CString number;
+		while ( y <= (int)amp_sum ) {
+			if ( y != 0 ) {
+				int y_pix = (y > 0) ? center_y - (int)(abs(y) * unit_in_pixels) : center_y + (int)(abs(y) * unit_in_pixels);
+
+				pDC->MoveTo(center_x - 2, y_pix);
+				pDC->LineTo(center_x + 2, y_pix);
+				number.Format("%d", y);
+				pDC->TextOut(center_x + 5, y_pix - (tm.tmHeight / 2), number);
+			}
+
+			y += 1;
+		}
 
 		CPen signal_pen(PS_SOLID, 1, RGB(255, 0, 0));
 		pDC->SelectObject(&signal_pen);
 
 		double x = start_x_units;
-		while ( x < -start_x_units ) {
+		while ( x <= -start_x_units ) {
 			double y = pDoc->Calc(x);
 			int x_pix = (int)floor(x * unit_in_pixels + center_x);
 			int y_pix = (int)floor(y * unit_in_pixels + center_y);
@@ -199,4 +217,31 @@ void CSignalView::OnFileAddsignal() {
 
 void CSignalView::OnUpdateFileAddsignal(CCmdUI* pCmdUI) {
 	pCmdUI->Enable(GetDocument()->SignalsCount() < 2);
+}
+
+void CSignalView::OnMouseMove(UINT nFlags, CPoint point) {
+	CString buf;
+	CSignalDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	CMainFrame * pFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+	ASSERT_VALID(pFrame);
+	CStatusBar * pStatus = pFrame->GetStatusBar();
+	ASSERT_VALID(pStatus);
+
+	//GetClientRect(&cl_rect);
+
+	int center_x = m_ClRect.right / 2;
+	int center_y = m_ClRect.bottom / 2;
+
+	double amp_sum = pDoc->CalcAmplitude();
+	if ( amp_sum > 0 ) {
+		double unit_in_pixels = (center_y - m_lFontHeight - TEXT_OFFSET * 2) / amp_sum;
+
+		double x_unit = (point.x - center_x) / unit_in_pixels;
+		double y_unit = - (point.y - center_y) / unit_in_pixels;
+		buf.Format(IDS_COORDINATES, x_unit, y_unit);
+		pStatus->SetPaneText(0, buf);
+	}
+
+	CView::OnMouseMove(nFlags, point);
 }

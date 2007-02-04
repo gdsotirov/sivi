@@ -42,7 +42,9 @@ public:
 	virtual void Dump(CDumpContext& dc) const;
 #endif
 
-protected:
+private:
+	RECT m_ClRect;
+	long m_lFontHeight;
 
 // Generated message map functions
 protected:
@@ -50,6 +52,7 @@ protected:
 	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
 	afx_msg void OnFileAddsignal();
 	afx_msg void OnUpdateFileAddsignal(CCmdUI* pCmdUI);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
