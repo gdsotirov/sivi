@@ -102,20 +102,36 @@ void CSignalView::OnDraw(CDC* pDC) {
 		double unit_in_pixels = (center_y - m_lFontHeight - TEXT_OFFSET * 2) / amp_sum;
 		double start_x_units = - center_x / unit_in_pixels;
 
-		// Draw numbers on the y axis
-		int y = -(int)amp_sum;
 		CString number;
-		while ( y <= (int)amp_sum ) {
-			if ( y != 0 ) {
-				int y_pix = (y > 0) ? center_y - (int)(abs(y) * unit_in_pixels) : center_y + (int)(abs(y) * unit_in_pixels);
+
+		// Draw numbers on the y axis
+		double y_unit = -floor(amp_sum);
+		while ( y_unit <= amp_sum ) {
+			if ( y_unit != 0 ) {
+				int y_pix = (y_unit > 0) ? center_y - (int)(fabs(y_unit) * unit_in_pixels) : center_y + (int)(fabs(y_unit) * unit_in_pixels);
 
 				pDC->MoveTo(center_x - 2, y_pix);
 				pDC->LineTo(center_x + 2, y_pix);
-				number.Format("%d", y);
-				pDC->TextOut(center_x + 5, y_pix - (tm.tmHeight / 2), number);
+				number.Format("%.2f", y_unit);
+				pDC->TextOut(center_x + 5, y_pix - (m_lFontHeight / 2), number);
 			}
 
-			y += 1;
+			y_unit += 1.0;
+		}
+
+		// Draw numbers on the x axis
+		double x_unit = ceil(start_x_units);
+		while ( x_unit <= -ceil(start_x_units) ) {
+			if ( x_unit != 0 ) {
+				int x_pix = (x_unit > 0) ? center_x + (int)(fabs(x_unit) * unit_in_pixels) : center_x - (int)(fabs(x_unit) * unit_in_pixels);
+
+				pDC->MoveTo(x_pix, center_y - 2);
+				pDC->LineTo(x_pix, center_y + 2);
+				number.Format("%.2f", x_unit);
+				pDC->TextOut(x_pix - (m_lFontHeight / 2), center_y + 5, number);
+			}
+
+			x_unit += 1.0;
 		}
 
 		CPen signal_pen(PS_SOLID, 1, RGB(255, 0, 0));
