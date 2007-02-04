@@ -25,8 +25,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWnd)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
-static UINT indicators[] =
-{
+static UINT indicators[] = {
 	ID_SEPARATOR,           // status line indicator
 	ID_INDICATOR_CAPS,
 	ID_INDICATOR_NUM,
@@ -36,18 +35,13 @@ static UINT indicators[] =
 /////////////////////////////////////////////////////////////////////////////
 // CMainFrame construction/destruction
 
-CMainFrame::CMainFrame()
-{
-	// TODO: add member initialization code here
-	
+CMainFrame::CMainFrame() {
 }
 
-CMainFrame::~CMainFrame()
-{
+CMainFrame::~CMainFrame() {
 }
 
-int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
-{
+int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 	if (CMDIFrameWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 	
@@ -59,10 +53,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;      // fail to create
 	}
 
-	if (!m_wndStatusBar.Create(this) ||
-		!m_wndStatusBar.SetIndicators(indicators,
-		  sizeof(indicators)/sizeof(UINT)))
-	{
+	if (!m_wndStatusBar.Create(this) || !m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT))) {
 		TRACE0("Failed to create status bar\n");
 		return -1;      // fail to create
 	}
@@ -76,8 +67,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
-{
+BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs) {
 	if( !CMDIFrameWnd::PreCreateWindow(cs) )
 		return FALSE;
 	// TODO: Modify the Window class or styles here by modifying
@@ -90,17 +80,22 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 // CMainFrame diagnostics
 
 #ifdef _DEBUG
-void CMainFrame::AssertValid() const
-{
+void CMainFrame::AssertValid() const {
 	CMDIFrameWnd::AssertValid();
 }
 
-void CMainFrame::Dump(CDumpContext& dc) const
-{
+void CMainFrame::Dump(CDumpContext& dc) const {
 	CMDIFrameWnd::Dump(dc);
 }
 
 #endif //_DEBUG
+
+/////////////////////////////////////////////////////////////////////////////
+// CMainFrame Attributes
+
+CStatusBar * CMainFrame::GetStatusBar() {
+	return &m_wndStatusBar;
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // CMainFrame message handlers

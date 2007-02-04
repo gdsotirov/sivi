@@ -9,14 +9,14 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-class CMainFrame : public CMDIFrameWnd
-{
+class CMainFrame : public CMDIFrameWnd {
 	DECLARE_DYNAMIC(CMainFrame)
 public:
 	CMainFrame();
 
 // Attributes
 public:
+	CStatusBar * GetStatusBar(void);
 
 // Operations
 public:
