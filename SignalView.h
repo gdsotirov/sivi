@@ -43,8 +43,14 @@ public:
 #endif
 
 private:
+	int m_iZoomFactor;
 	RECT m_ClRect;
 	long m_lFontHeight;
+	double m_dPixPerUnitX;
+	double m_dPixPerUnitY;
+	int m_iCenterX;
+	int m_iCenterY;
+	double m_dDiscretFreq;
 
 // Generated message map functions
 protected:
@@ -53,6 +59,11 @@ protected:
 	afx_msg void OnFileAddsignal();
 	afx_msg void OnUpdateFileAddsignal(CCmdUI* pCmdUI);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnViewZoomIn();
+	afx_msg void OnViewZoomOut();
+	afx_msg void OnViewOriginalSize();
+	afx_msg void OnUpdateViewZoomOut(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateViewOriginalSize(CCmdUI* pCmdUI);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
