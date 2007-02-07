@@ -157,8 +157,9 @@ BEGIN
     BUTTON      ID_FILE_SAVE
     SEPARATOR
     BUTTON      ID_FILE_ADDSIGNAL
-    BUTTON      ID_VIEW_ZOM_ZOOMIN
-    BUTTON      ID_VIEW_ZOM_ZOOMOUT
+    SEPARATOR
+    BUTTON      ID_VIEW_ZOOM_ZOOMIN
+    BUTTON      ID_VIEW_ZOOM_ZOOMOUT
     SEPARATOR
     BUTTON      ID_FILE_PRINT
     SEPARATOR
@@ -225,11 +226,12 @@ BEGIN
     END
     POPUP "&View"
     BEGIN
-        POPUP "Zom"
+        POPUP "Zoom"
         BEGIN
-            MENUITEM "Zoom In\tAlt++",              ID_VIEW_ZOM_ZOOMIN
-            MENUITEM "Zoom Out\tAlt+-",             ID_VIEW_ZOM_ZOOMOUT
-            MENUITEM "Original size\tAlt+0",        ID_VIEW_ZOM_ORIGINALSIZE
+            MENUITEM "Zoom In\tAlt++",              ID_VIEW_ZOOM_ZOOMIN
+            MENUITEM "Zoom Out\tAlt+-",             ID_VIEW_ZOOM_ZOOMOUT
+            MENUITEM "Original size\tAlt+0",        ID_VIEW_ZOOM_ORIGINALSIZE
+
         END
         MENUITEM SEPARATOR
         MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
@@ -496,6 +498,11 @@ BEGIN
     ID_FILE_ADDSIGNAL       "Add another signal"
     ID_VIEW_ZOM_ZOOMIN      "Zoom In"
     ID_VIEW_ZOM_ZOOMOUT     "Zoom Out"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_BUTTON32786          "-"
 END
 
 #endif    // English (U.S.) resources

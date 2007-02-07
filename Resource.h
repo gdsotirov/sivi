@@ -17,6 +17,10 @@
 #define ID_VIEW_ZOM_ZOOMIN              32780
 #define ID_VIEW_ZOM_ZOOMOUT             32781
 #define ID_VIEW_ZOM_ORIGINALSIZE        32782
+#define ID_VIEW_ZOOM_ZOOMIN             32783
+#define ID_VIEW_ZOOM_ORIGINALSIZE       32784
+#define ID_VIEW_ZOOM_ZOOMOUT            32785
+#define ID_BUTTON32786                  32786
 #define IDS_VIEW_INFO                   61446
 #define IDS_VIEW_INFO_CMB               61447
 #define IDS_SIGNAL_ADDERR               61448
@@ -28,7 +32,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        134
-#define _APS_NEXT_COMMAND_VALUE         32783
+#define _APS_NEXT_COMMAND_VALUE         32787
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
