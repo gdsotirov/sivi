@@ -490,7 +490,7 @@ BEGIN
     IDS_VIEW_INFO           "Type: %s, Amp: %.2f, Freq: %.2f"
     IDS_VIEW_INFO_CMB       "Type: %s"
     IDS_SIGNAL_ADDERR       "Error creating signal! Signal not added."
-    IDS_COORDINATES         "X: %.2f, Y: %.2f"
+    IDS_COORDINATES         "X: %.3f, Y: %.3f"
 END
 
 STRINGTABLE DISCARDABLE 
