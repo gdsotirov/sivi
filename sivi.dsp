@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GR /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Yu"stdafx.h" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x402 /d "NDEBUG" /d "_AFXDLL"
@@ -103,6 +103,8 @@ SOURCE=.\Signal.cpp
 
 !IF  "$(CFG)" == "sivi - Win32 Release"
 
+# SUBTRACT CPP /YX /Yc /Yu
+
 !ELSEIF  "$(CFG)" == "sivi - Win32 Debug"
 
 # ADD CPP /GR
@@ -131,6 +133,8 @@ SOURCE=.\SignalSin.cpp
 
 !IF  "$(CFG)" == "sivi - Win32 Release"
 
+# SUBTRACT CPP /YX /Yc /Yu
+
 !ELSEIF  "$(CFG)" == "sivi - Win32 Debug"
 
 # ADD CPP /GR
@@ -144,6 +148,8 @@ SOURCE=.\SignalSin.cpp
 SOURCE=.\SignalTri.cpp
 
 !IF  "$(CFG)" == "sivi - Win32 Release"
+
+# SUBTRACT CPP /YX /Yc /Yu
 
 !ELSEIF  "$(CFG)" == "sivi - Win32 Debug"
 
