@@ -121,7 +121,7 @@ void CSignalView::OnDraw(CDC* pDC) {
 		CString number;
 
 		// Draw numbers on the y axis
-		double y_unit = -floor(amp_sum);
+		double y_unit = -amp_sum;
 		while ( y_unit <= amp_sum ) {
 			if ( y_unit != 0 ) {
 				int y_pix = (y_unit > 0) ? m_iCenterY - (int)(fabs(y_unit) * m_dPixPerUnitY) : m_iCenterY + (int)(fabs(y_unit) * m_dPixPerUnitY);
@@ -136,20 +136,32 @@ void CSignalView::OnDraw(CDC* pDC) {
 		}
 
 		// Draw numbers on the x axis
-		double x_unit = ceil(start_x_units);
-		while ( x_unit <= -ceil(start_x_units) ) {
-			if ( x_unit != 0 ) {
-				int x_pix = (x_unit > 0) ? m_iCenterX + (int)(fabs(x_unit) * m_dPixPerUnitX) : m_iCenterX - (int)(fabs(x_unit) * m_dPixPerUnitX);
+		double x_unit = 0.0;
+		while ( x_unit > start_x_units ) {
+			if ( x_unit < 0.0 ) {
+				int x_pix = m_iCenterX - (int)(fabs(x_unit) * m_dPixPerUnitX);
 
 				pDC->MoveTo(x_pix, m_iCenterY - 2);
 				pDC->LineTo(x_pix, m_iCenterY + 2);
-				number.Format("%.2f", x_unit);
+				number.Format("%.3f", x_unit);
 				pDC->TextOut(x_pix - (m_lFontHeight / 2), m_iCenterY + 5, number);
 			}
 
-			x_unit += 1.0;
+			x_unit -= 1.0 / m_iZoomFactor;
 		}
+		while ( x_unit < -start_x_units ) {
+			if ( x_unit > 0 ) {
+				int x_pix = m_iCenterX + (int)(fabs(x_unit) * m_dPixPerUnitX);
 
+				pDC->MoveTo(x_pix, m_iCenterY - 2);
+				pDC->LineTo(x_pix, m_iCenterY + 2);
+				number.Format("%.3f", x_unit);
+				pDC->TextOut(x_pix - (m_lFontHeight / 2), m_iCenterY + 5, number);
+			}
+
+			x_unit += 1.0 / m_iZoomFactor;
+		}
+				
 		CPen signal_pen(PS_SOLID, 1, RGB(255, 0, 0));
 		pDC->SelectObject(&signal_pen);
 
@@ -163,7 +175,7 @@ void CSignalView::OnDraw(CDC* pDC) {
 				pDC->MoveTo(x_pix, y_pix);
 			pDC->LineTo(x_pix, y_pix);
 
-			x += 1 / m_dDiscretFreq;
+			x += 1 / m_dPixPerUnitX;
 		}
 	}
 
@@ -223,7 +235,6 @@ void CSignalView::OnLButtonDblClk(UINT nFlags, CPoint point) {
 			pDoc->ChangeType(i, new_type);
 			pSig->setAmplitude(sig_params.m_samp);
 			pSig->setFrequency(sig_params.m_sfreq);
-			m_dDiscretFreq = 2 * pSig->getFrequency();
 			pDoc->SetModifiedFlag();
 			pDoc->UpdateAllViews(NULL);
 		}
@@ -276,7 +287,7 @@ void CSignalView::OnViewZoomIn() {
 	CSignalDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 
-	m_iZoomFactor++;
+	m_iZoomFactor *= 2;
 
 	pDoc->UpdateAllViews(NULL);
 }
@@ -286,7 +297,7 @@ void CSignalView::OnViewZoomOut() {
 	ASSERT_VALID(pDoc);
 
 	if ( m_iZoomFactor > 1 )
-		m_iZoomFactor--;
+		m_iZoomFactor /= 2;
 
 	pDoc->UpdateAllViews(NULL);
 }
