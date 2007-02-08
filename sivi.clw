@@ -21,10 +21,10 @@ Resource3=IDR_SIVITYPE
 Class5=CChildFrame
 Class6=CAboutDlg
 Resource4=IDR_SIGNALMENU (English (U.S.))
-Resource5=IDD_ABOUTBOX (English (U.S.))
-Resource6=IDD_SIGPARAMS
+Resource5=IDR_MAINFRAME (English (U.S.))
+Resource6=IDD_ABOUTBOX (English (U.S.))
 Class7=CSigPrmsDlg
-Resource7=IDR_MAINFRAME (English (U.S.))
+Resource7=IDD_SIGPARAMS
 
 [CLS:CSiviApp]
 Type=0
