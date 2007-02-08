@@ -50,7 +50,6 @@ private:
 	double m_dPixPerUnitY;
 	int m_iCenterX;
 	int m_iCenterY;
-	double m_dDiscretFreq;
 
 // Generated message map functions
 protected:
