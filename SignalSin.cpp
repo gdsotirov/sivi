@@ -3,6 +3,7 @@
 #endif
 #include <cmath>
 
+#include "StdAfx.h"
 /* It looks like that math defines are not allways availiable in Microsoft
  * include files, so we will define what we need just in case.
  */
