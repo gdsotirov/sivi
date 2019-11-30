@@ -45,9 +45,12 @@ END_MESSAGE_MAP()
 
 CSignalView::CSignalView() {
 	m_iZoomFactor = 1;
+	m_ClRect = { 0, 0, 0, 0 };
 	m_lFontHeight = 0;
 	m_dPixPerUnitX = 1.0;
 	m_dPixPerUnitY = 1.0;
+	m_iCenterX = 0;
+	m_iCenterY = 0;
 }
 
 CSignalView::~CSignalView() {
