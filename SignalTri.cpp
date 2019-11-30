@@ -29,7 +29,7 @@ CSignalTri::~CSignalTri(void) {
 }
 
 double CSignalTri::Calc(double t) {
-	return amplitude * (2 / M_PI) * asin(sin(2 * M_PI * frequency * t));
+  return amplitude * (2 / M_PI) * asin(sin(2 * M_PI * frequency * t));
 }
 
 } // namespace sivi

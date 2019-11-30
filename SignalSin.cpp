@@ -29,7 +29,7 @@ CSignalSin::~CSignalSin(void) {
 }
 
 double CSignalSin::Calc(double t) {
-	return amplitude * sin(2 * M_PI * frequency * t);
+  return amplitude * sin(2 * M_PI * frequency * t);
 }
 
 } // namespace sivi

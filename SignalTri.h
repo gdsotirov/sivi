@@ -11,16 +11,16 @@ namespace sivi {
 
 class CSignalTri : public CSignal {
 #ifdef _MSC_VER
-	DECLARE_SERIAL(CSignalTri)
+  DECLARE_SERIAL(CSignalTri)
 #endif
 public:
-	// Constructors/destructors
-	CSignalTri(void);
-	CSignalTri(double amp, double freq);
-	virtual ~CSignalTri(void);
+  // Constructors/destructors
+  CSignalTri(void);
+  CSignalTri(double amp, double freq);
+  virtual ~CSignalTri(void);
 
-	// General methods
-	virtual double Calc(double t);
+  // General methods
+  virtual double Calc(double t);
 };
 
 } // namespace sivi

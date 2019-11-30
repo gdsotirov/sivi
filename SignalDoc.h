@@ -20,50 +20,50 @@ using sivi::CSignalTri;
 
 class CSignalDoc : public CDocument {
 protected: // create from serialization only
-	CSignalDoc();
-	DECLARE_DYNCREATE(CSignalDoc)
+  CSignalDoc();
+  DECLARE_DYNCREATE(CSignalDoc)
 
 // Attributes
 private:
-	CObArray m_aSignals;
+  CObArray m_aSignals;
 
 // Attributes
 public:
-	CSignal * GetSignal(int number) const;
-	int SignalsCount(void) const;
-	CString GetType(int number) const;
+  CSignal * GetSignal(int number) const;
+  int SignalsCount(void) const;
+  CString GetType(int number) const;
 
 // Operations
 public:
-	int ChangeType(int number, CString type);
-	int AddSignal(CString type, double amp, double freq);
-	double CalcAmplitude(void);
-	double Calc(double x);
+  int ChangeType(int number, CString type);
+  int AddSignal(CString type, double amp, double freq);
+  double CalcAmplitude(void);
+  double Calc(double x);
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CSignalDoc)
-	public:
-	virtual BOOL OnNewDocument();
-	virtual void Serialize(CArchive& ar);
-	//}}AFX_VIRTUAL
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CSignalDoc)
+public:
+  virtual BOOL OnNewDocument();
+  virtual void Serialize(CArchive& ar);
+  //}}AFX_VIRTUAL
 
 // Implementation
 public:
-	virtual ~CSignalDoc();
+  virtual ~CSignalDoc();
 #ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+  virtual void AssertValid() const;
+  virtual void Dump(CDumpContext& dc) const;
 #endif
 
 protected:
 
 // Generated message map functions
 protected:
-	//{{AFX_MSG(CSignalDoc)
-	afx_msg void OnUpdateFileSave(CCmdUI* pCmdUI);
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  //{{AFX_MSG(CSignalDoc)
+  afx_msg void OnUpdateFileSave(CCmdUI* pCmdUI);
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////
