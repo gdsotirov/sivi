@@ -111,7 +111,7 @@ void CSignalView::OnDraw(CDC* pDC) {
 
 	double amp_sum = pDoc->CalcAmplitude();
 	if ( amp_sum != 0 ) {
-		m_dPixPerUnitY = (m_iCenterY - m_lFontHeight - TEXT_OFFSET * 2) / amp_sum;
+		m_dPixPerUnitY = ((double)m_iCenterY - (double)m_lFontHeight - (double)(TEXT_OFFSET * 2)) / amp_sum;
 		m_dPixPerUnitX = m_dPixPerUnitY;
 
 		double start_x_units = - m_iCenterX / m_dPixPerUnitX;
@@ -277,7 +277,7 @@ void CSignalView::OnMouseMove(UINT nFlags, CPoint point) {
 
 	double amp_sum = pDoc->CalcAmplitude();
 	if ( amp_sum > 0 ) {
-		double x_unit = (point.x - m_iCenterX) / m_dPixPerUnitX;
+		double x_unit = ((double)point.x - (double)m_iCenterX) / m_dPixPerUnitX;
 		double y_unit = - (point.y - m_iCenterY) / m_dPixPerUnitY;
 		buf.Format(IDS_COORDINATES, x_unit, y_unit);
 		pStatus->SetPaneText(0, buf);
