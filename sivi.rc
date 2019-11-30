@@ -108,6 +108,13 @@ END
 
 STRINGTABLE
 BEGIN
+    SIG_TYP_UKN             "Непознат"
+    SIG_TYP_SIN             "Синусоиден"
+    SIG_TYP_TRI             "Триъгълен"
+END
+
+STRINGTABLE
+BEGIN
     AFX_IDS_APP_TITLE       "sivi"
     AFX_IDS_IDLEMESSAGE     "В готовност"
 END
@@ -196,7 +203,6 @@ STRINGTABLE
 BEGIN
     AFX_IDS_PREVIEW_CLOSE   "Затваряне на режима за преглед\nОтказ от прегледа"
     IDS_VIEW_INFO           "Тип: %s, Ампл: %.2f, Чест: %.2f"
-    IDS_VIEW_INFO_CMB       "Тип: %s"
     IDS_SIGNAL_ADDERR       "Грешка при създаване на сигнал! Не е добавен сигнал."
     IDS_COORDINATES         "X: %.3f, Y: %.3f"
 END
@@ -205,8 +211,12 @@ STRINGTABLE
 BEGIN
     ID_FILE_ADDSIGNAL       "Добавяне на друг сигнал"
     ID_VIEW_ZOOM_ZOOMIN     "Увеличаване на мащаба"
-    ID_VIEW_ZOOM_ZOOMOUT    "Намаляване на мащаба"
+END
+
+STRINGTABLE
+BEGIN
     ID_VIEW_ZOOM_ORIGINALSIZE "Връщане на първоначалния мащаб"
+    ID_VIEW_ZOOM_ZOOMOUT    "Намаляване на мащаба"
 END
 
 #endif    // Bulgarian resources
@@ -562,6 +572,13 @@ END
 
 STRINGTABLE
 BEGIN
+    SIG_TYP_UKN             "Unknown"
+    SIG_TYP_SIN             "Sinusoidal"
+    SIG_TYP_TRI             "Triangular"
+END
+
+STRINGTABLE
+BEGIN
     AFX_IDS_APP_TITLE       "sivi"
     AFX_IDS_IDLEMESSAGE     "Ready"
 END
@@ -659,8 +676,12 @@ STRINGTABLE
 BEGIN
     ID_FILE_ADDSIGNAL       "Add another signal"
     ID_VIEW_ZOOM_ZOOMIN     "Zoom In"
-    ID_VIEW_ZOOM_ZOOMOUT    "Zoom Out"
+END
+
+STRINGTABLE
+BEGIN
     ID_VIEW_ZOOM_ORIGINALSIZE "Return to original zoom"
+    ID_VIEW_ZOOM_ZOOMOUT    "Zoom Out"
 END
 
 #endif    // English resources

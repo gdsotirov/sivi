@@ -73,30 +73,29 @@ void CSignalView::OnDraw(CDC* pDC) {
   CString buf;
   CString type;
   TEXTMETRIC tm;
-
-  if ( pDoc->SignalsCount() > 1 )
-    type = "Combined";
-  else {
-    if ( pDoc->GetType(0) == _T("sin") )
-      type = "Sinusoidal";
-    else if ( pDoc->GetType(0) == _T("tri") )
-      type = "Triangular";
-    else
-      type = "Unknown";
-  }
+  int iTxtOffsetY = 0;
 
 #define TEXT_OFFSET 5 // pixels
 
-  if ( pDoc->SignalsCount() == 1 ) {
-    CSignal * sig = pDoc->GetSignal(0);
-    buf.Format(IDS_VIEW_INFO, type, sig->getAmplitude(), sig->getFrequency());
-  }
-  else
-    buf.Format(IDS_VIEW_INFO_CMB, type);
-
-  pDC->TextOut(TEXT_OFFSET, TEXT_OFFSET, buf);
   pDC->GetTextMetrics(&tm);
   m_lFontHeight = tm.tmHeight;
+
+  // Print signals information
+  for (int iSig = 0; iSig < pDoc->SignalsCount(); iSig++) {
+    CSignal* sig = pDoc->GetSignal(iSig);
+
+    if (pDoc->GetType(iSig) == _T("sin"))
+      type.Format(SIG_TYP_SIN);
+    else if (pDoc->GetType(iSig) == _T("tri"))
+      type.Format(SIG_TYP_TRI);
+    else
+      type.Format(SIG_TYP_UKN);
+
+    buf.Format(IDS_VIEW_INFO, type, sig->getAmplitude(), sig->getFrequency());
+    iTxtOffsetY += TEXT_OFFSET;
+    pDC->TextOut(TEXT_OFFSET, iTxtOffsetY, buf);
+    iTxtOffsetY += m_lFontHeight;
+  }
 
   // Draw coordinate system
   GetClientRect(&m_ClRect);
@@ -111,7 +110,7 @@ void CSignalView::OnDraw(CDC* pDC) {
 
   double amp_sum = pDoc->CalcAmplitude();
   if ( amp_sum != 0 ) {
-    m_dPixPerUnitY = ((double)m_iCenterY - (double)m_lFontHeight - (double)(TEXT_OFFSET * 2)) / amp_sum;
+    m_dPixPerUnitY = ((double)m_iCenterY - (double)iTxtOffsetY) / amp_sum;
     m_dPixPerUnitX = m_dPixPerUnitY;
 
     double start_x_units = - m_iCenterX / m_dPixPerUnitX;
@@ -132,7 +131,7 @@ void CSignalView::OnDraw(CDC* pDC) {
         pDC->MoveTo(m_iCenterX - 2, y_pix);
         pDC->LineTo(m_iCenterX + 2, y_pix);
         number.Format("%.2f", y_unit);
-        pDC->TextOut(m_iCenterX + 5, y_pix - (m_lFontHeight / 2), number);
+        pDC->TextOut(m_iCenterX + TEXT_OFFSET, y_pix - (m_lFontHeight / 2), number);
       }
 
       y_unit += 1.0;
@@ -147,7 +146,7 @@ void CSignalView::OnDraw(CDC* pDC) {
         pDC->MoveTo(x_pix, m_iCenterY - 2);
         pDC->LineTo(x_pix, m_iCenterY + 2);
         number.Format("%.3f", x_unit);
-        pDC->TextOut(x_pix - (m_lFontHeight / 2), m_iCenterY + 5, number);
+        pDC->TextOut(x_pix - (m_lFontHeight / 2), m_iCenterY + TEXT_OFFSET, number);
       }
 
       x_unit -= 1.0 / m_iZoomFactor;
@@ -159,7 +158,7 @@ void CSignalView::OnDraw(CDC* pDC) {
         pDC->MoveTo(x_pix, m_iCenterY - 2);
         pDC->LineTo(x_pix, m_iCenterY + 2);
         number.Format("%.3f", x_unit);
-        pDC->TextOut(x_pix - (m_lFontHeight / 2), m_iCenterY + 5, number);
+        pDC->TextOut(x_pix - (m_lFontHeight / 2), m_iCenterY + TEXT_OFFSET, number);
       }
 
       x_unit += 1.0 / m_iZoomFactor;

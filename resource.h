@@ -7,6 +7,9 @@
 #define IDR_SIVITYPE                    129
 #define IDR_SIGNALMENU                  129
 #define IDD_SIGPARAMS                   131
+#define SIG_TYP_UKN                     200
+#define SIG_TYP_SIN                     201
+#define SIG_TYP_TRI                     202
 #define IDC_SIGTYPE                     1000
 #define IDC_STSIGTYPE                   1001
 #define IDC_SIGAMP                      1002
