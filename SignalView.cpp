@@ -77,7 +77,7 @@ void CSignalView::OnDraw(CDC* pDC) {
   if ( pDoc->SignalsCount() > 1 )
     type = "Combined";
   else {
-    if ( pDoc->GetType(0) == _T("sin") ) 
+    if ( pDoc->GetType(0) == _T("sin") )
       type = "Sinusoidal";
     else if ( pDoc->GetType(0) == _T("tri") )
       type = "Triangular";
@@ -164,7 +164,7 @@ void CSignalView::OnDraw(CDC* pDC) {
 
       x_unit += 1.0 / m_iZoomFactor;
     }
-        
+
     CPen signal_pen(PS_SOLID, 1, RGB(255, 0, 0));
     pDC->SelectObject(&signal_pen);
 
@@ -319,5 +319,5 @@ void CSignalView::OnUpdateViewZoomOut(CCmdUI* pCmdUI) {
 }
 
 void CSignalView::OnUpdateViewOriginalSize(CCmdUI* pCmdUI) {
-  pCmdUI->Enable(m_iZoomFactor != 1); 
+  pCmdUI->Enable(m_iZoomFactor != 1);
 }
