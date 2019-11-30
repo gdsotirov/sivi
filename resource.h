@@ -1,5 +1,5 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Visual C++ generated include file.
 // Used by sivi.rc
 //
 #define IDD_ABOUTBOX                    100
@@ -20,7 +20,6 @@
 #define ID_VIEW_ZOOM_ZOOMIN             32783
 #define ID_VIEW_ZOOM_ORIGINALSIZE       32784
 #define ID_VIEW_ZOOM_ZOOMOUT            32785
-#define ID_BUTTON32786                  32786
 #define IDS_VIEW_INFO                   61446
 #define IDS_VIEW_INFO_CMB               61447
 #define IDS_SIGNAL_ADDERR               61448
