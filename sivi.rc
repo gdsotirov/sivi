@@ -268,61 +268,6 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
-
-IDD_SIGPARAMS DIALOG 0, 0, 151, 98
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Signal parameters"
-FONT 8, "MS Sans Serif"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,22,77,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,80,77,50,14
-    LTEXT           "Type:",IDC_STSIGTYPE,7,7,45,12,SS_CENTERIMAGE
-    COMBOBOX        IDC_SIGTYPE,60,7,84,41,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    EDITTEXT        IDC_SIGAMP,60,26,47,14,ES_AUTOHSCROLL
-    EDITTEXT        IDC_SIGFREQ,60,47,47,14,ES_AUTOHSCROLL
-    LTEXT           "Amplitude:",IDC_STSIGAMP,7,27,45,12,SS_CENTERIMAGE
-    LTEXT           "Freqency:",IDC_STSIGFREQ,7,48,45,12,SS_CENTERIMAGE
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
-BEGIN
-    IDD_SIGPARAMS, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 144
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 91
-    END
-END
-#endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog Info
-//
-
-IDD_SIGPARAMS DLGINIT
-BEGIN
-    IDC_SIGTYPE, 0x403, 11, 0
-0x6953, 0x756e, 0x6f73, 0x6469, 0x6c61, "\000" 
-    IDC_SIGTYPE, 0x403, 11, 0
-0x7254, 0x6169, 0x676e, 0x6c75, 0x7261, "\000" 
-    0
-END
-
 #endif    // Bulgarian (Bulgaria) resources
 /////////////////////////////////////////////////////////////////////////////
 
@@ -415,13 +360,28 @@ END
 // Dialog
 //
 
+IDD_SIGPARAMS DIALOGEX 0, 0, 151, 98
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Signal parameters"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,22,77,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,80,77,50,14
+    LTEXT           "Type:",IDC_STSIGTYPE,7,7,45,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_SIGTYPE,60,7,84,41,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_SIGAMP,60,26,47,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SIGFREQ,60,47,47,14,ES_AUTOHSCROLL
+    LTEXT           "Amplitude:",IDC_STSIGAMP,7,27,45,12,SS_CENTERIMAGE
+    LTEXT           "Frequency:",IDC_STSIGFREQ,7,48,45,12,SS_CENTERIMAGE
+END
+
 IDD_ABOUTBOX DIALOGEX 0, 0, 252, 56
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About Signal Visualizer"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
-    LTEXT           "Signal Visualizer Version 1.0",IDC_STATIC,40,10,147,8,SS_NOPREFIX
+    LTEXT           "Signal Visualizer Version 1.1",IDC_STATIC,40,10,147,8,SS_NOPREFIX
     LTEXT           "Copyright © 2007-2019 Georgi && Boyan D. Sotirov",IDC_STATIC,40,25,147,8
     DEFPUSHBUTTON   "OK",IDOK,195,7,50,14,WS_GROUP
 END
@@ -435,6 +395,14 @@ END
 #ifdef APSTUDIO_INVOKED
 GUIDELINES DESIGNINFO
 BEGIN
+    IDD_SIGPARAMS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 144
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 91
+    END
+
     IDD_ABOUTBOX, DIALOG
     BEGIN
         LEFTMARGIN, 7
@@ -444,6 +412,21 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SIGPARAMS DLGINIT
+BEGIN
+    IDC_SIGTYPE, 0x403, 11, 0
+0x6953, 0x756e, 0x6f73, 0x6469, 0x6c61, "\000" 
+    IDC_SIGTYPE, 0x403, 11, 0
+0x7254, 0x6169, 0x676e, 0x6c75, 0x7261, "\000" 
+    0
+END
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -524,6 +507,11 @@ END
 //
 
 IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SIGPARAMS AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
