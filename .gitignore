@@ -1,4 +1,8 @@
 .vs/*
 *.aps
+*.clw
+*.ncb
+*.opt
+*.suo
 Debug/*
 Release/*
