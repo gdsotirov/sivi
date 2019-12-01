@@ -7,6 +7,8 @@
 // SigPrmsDlg.h : header file
 //
 
+#include "CNumericEdit.h"
+
 /////////////////////////////////////////////////////////////////////////////
 // CSigPrmsDlg dialog
 
@@ -33,6 +35,8 @@ protected:
 
 // Implementation
 protected:
+  CNumericEdit m_NCAmp;
+  CNumericEdit m_NCFreq;
 
   // Generated message map functions
   //{{AFX_MSG(CSigPrmsDlg)

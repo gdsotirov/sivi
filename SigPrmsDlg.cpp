@@ -28,7 +28,9 @@ void CSigPrmsDlg::DoDataExchange(CDataExchange* pDX) {
   CDialog::DoDataExchange(pDX);
   //{{AFX_DATA_MAP(CSigPrmsDlg)
   DDX_CBString(pDX, IDC_SIGTYPE, m_stype);
+  DDX_Control(pDX, IDC_SIGAMP, m_NCAmp);
   DDX_Text(pDX, IDC_SIGAMP,  m_samp);
+  DDX_Control(pDX, IDC_SIGFREQ, m_NCFreq);
   DDX_Text(pDX, IDC_SIGFREQ, m_sfreq);
   //}}AFX_DATA_MAP
 }
