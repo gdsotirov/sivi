@@ -25,6 +25,10 @@ CSignalSin::CSignalSin() : CSignal() {
 CSignalSin::CSignalSin(double amp, double freq) : CSignal(amp, freq) {
 }
 
+CSignalSin::CSignalSin(const CSignal& sig) : CSignal(sig)
+{
+}
+
 CSignalSin::~CSignalSin(void) {
 }
 
@@ -33,3 +37,4 @@ double CSignalSin::Calc(double t) {
 }
 
 } // namespace sivi
+

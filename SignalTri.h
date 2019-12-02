@@ -17,6 +17,7 @@ public:
   // Constructors/destructors
   CSignalTri(void);
   CSignalTri(double amp, double freq);
+  CSignalTri(const CSignal& sig);
   virtual ~CSignalTri(void);
 
   // General methods
@@ -26,3 +27,4 @@ public:
 } // namespace sivi
 
 #endif // __SIVI_CSIGNALTRI_H__
+

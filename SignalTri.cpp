@@ -25,6 +25,10 @@ CSignalTri::CSignalTri(void) : CSignal() {
 CSignalTri::CSignalTri(double amp = 0.0, double freq =  0.0) : CSignal(amp, freq) {
 }
 
+CSignalTri::CSignalTri(const CSignal& sig) : CSignal(sig)
+{
+}
+
 CSignalTri::~CSignalTri(void) {
 }
 
@@ -33,3 +37,4 @@ double CSignalTri::Calc(double t) {
 }
 
 } // namespace sivi
+

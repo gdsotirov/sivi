@@ -17,6 +17,7 @@ public:
   // Constructors/destructors
   CSignalSin(void);
   CSignalSin(double amp, double freq);
+  CSignalSin(const CSignal& sig);
   virtual ~CSignalSin(void);
 
   // General methods
@@ -26,3 +27,4 @@ public:
 } // namespace sivi
 
 #endif // __SIVI_CSIGNALSIN_H__
+
