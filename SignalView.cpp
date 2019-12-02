@@ -232,11 +232,11 @@ void CSignalView::OnLButtonDblClk(UINT nFlags, CPoint point) {
     sig_params.m_sfreq = pSig->getFrequency();
 
     if ( sig_params.DoModal() == IDOK ) {
+      pSig->setAmplitude(sig_params.m_samp);
+      pSig->setFrequency(sig_params.m_sfreq);
       CString new_type = sig_params.m_stype.Mid(0, 3);
       new_type.MakeLower();
       pDoc->ChangeType(i, new_type);
-      pSig->setAmplitude(sig_params.m_samp);
-      pSig->setFrequency(sig_params.m_sfreq);
       pDoc->SetModifiedFlag();
       pDoc->UpdateAllViews(NULL);
     }
@@ -320,3 +320,4 @@ void CSignalView::OnUpdateViewZoomOut(CCmdUI* pCmdUI) {
 void CSignalView::OnUpdateViewOriginalSize(CCmdUI* pCmdUI) {
   pCmdUI->Enable(m_iZoomFactor != 1);
 }
+
