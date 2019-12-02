@@ -99,15 +99,20 @@ CString CSignalDoc::GetType(int number) const {
 
 int CSignalDoc::ChangeType(int number, CString new_type) {
   if ( GetType(number) != new_type ) {
-    CSignal * sig = (CSignal *)m_aSignals.GetAt(number);
-    delete sig;
-    sig = NULL;
-    if ( new_type == _T("tri") )
-      sig = new CSignalTri;
-    else
-      sig = new CSignalSin;
-    m_aSignals.SetAt(number, sig);
+    CSignal * oldSig = (CSignal *)m_aSignals.GetAt(number);
+    CSignal * newSig = NULL;
+
+    if (new_type == _T("tri")) {
+      newSig = new CSignalTri(*oldSig);
+    }
+    else {
+      newSig = new CSignalSin(*oldSig);
+    }
+
+    m_aSignals.SetAt(number, newSig);
+    delete oldSig;
   }
+
   return 0;
 }
 
