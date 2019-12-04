@@ -113,6 +113,8 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="sivi.reg" />
+    <None Include="Signals.cd" />
+    <None Include="MDI.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
